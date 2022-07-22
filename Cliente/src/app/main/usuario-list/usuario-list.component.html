@@ -1,0 +1,65 @@
+<div class="col-lg-12">
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Pais</th>
+            <th>¿Recibe informacion?</th>
+            <th>Fecha nacimiento</th>
+            <th class="text-center fit">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of usuarios">
+            <td>{{ user.apellido }}</td>
+            <td>{{ user.nombre }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.telefono }}</td>
+            <td>{{ user.pais.nombre }}</td>
+            <td>{{ user.recibe_informacion }}</td>
+            <td>{{ user.fecha_nacimiento | date: "dd-MM-yyyy" }}</td>
+
+            <td class="text-center fit">
+              <button
+                class="btn btn-xs btn-primary"
+                (click)="redirect(user.id_usuario, 'view')"
+                title="Visualizar"
+                ngbTooltip="view"
+                type="button"
+              >
+                Visualizar
+              </button>
+              &nbsp;
+              <button
+                class="btn btn-xs btn-success"
+                (click)="redirect(user.id_usuario, 'edit')"
+                title="Editar"
+                ngbTooltip="edit"
+                type="button"
+              >
+                Editar
+              </button>
+              &nbsp;
+              <button
+                class="btn btn-xs btn-danger"
+                (click)="deleteUser(user.id_usuario)"
+                title="Eliminar"
+                ngbTooltip="delete"
+                type="button">
+                Borrar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-primary" (click)="new()">
+  <i class="fa fa-plus mx-1 mr-2"></i>Nuevo
+</button>

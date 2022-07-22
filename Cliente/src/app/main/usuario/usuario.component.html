@@ -1,0 +1,192 @@
+<div class="row">
+  <div class="col">
+    <form
+      autocomplete="off"
+      [formGroup]="formNewUser"
+      (ngSubmit)="guardarUsuario()"
+    >
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="form-label"
+            >Nombre <span class="text-danger"> * </span></label
+          >
+          <input
+            type="text"
+            maxlength="100"
+            [ngClass]="
+              formNewUser.get('nombre')?.hasError('required') &&
+              formNewUser.get('nombre')?.touched
+                ? 'form-control is-invalid'
+                : 'form-control'
+            "
+            placeholder="Nombre"
+            id="nombre"
+            formControlName="nombre"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              formNewUser.get('nombre')?.hasError('required') &&
+              formNewUser.get('nombre')?.touched
+            "
+            >Este campo es obligatorio.
+          </small>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="form-label"
+            >Apellido <span class="text-danger"> * </span></label
+          >
+          <input
+            type="text"
+            maxlength="100"
+            [ngClass]="
+              formNewUser.get('apellido')?.hasError('required') &&
+              formNewUser.get('apellido')?.touched
+                ? 'form-control is-invalid'
+                : 'form-control'
+            "
+            placeholder="Apellido"
+            id="apellido"
+            formControlName="apellido"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              formNewUser.get('apellido')?.hasError('required') &&
+              formNewUser.get('apellido')?.hasError('pattern') &&
+              formNewUser.get('apellido')?.touched
+            "
+            >Este campo es obligatorio.
+          </small>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="form-label"
+            >Correo electronico <span class="text-danger"> * </span></label
+          >
+          <input
+            type="text"
+            [ngClass]="
+              formNewUser.get('email')?.hasError('required') &&
+              formNewUser.get('email')?.touched
+                ? 'form-control is-invalid'
+                : 'form-control'"
+            placeholder="Email"
+            id="email"
+            formControlName="email"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              formNewUser.get('email')?.hasError('required') &&
+              formNewUser.get('email')?.touched
+            "
+            >Este campo es obligatorio.
+          </small>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="form-label">Telefono</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="telefono"
+            id="telefono"
+            formControlName="telefono"
+          />
+        </div>
+        <small
+        class="text-danger"
+        *ngIf="
+          formNewUser.get('telefono')?.hasError('pattern')
+
+        "
+        >Solo se admiten números.</small
+      >
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="form-label"
+            >Fecha nacimiento <span class="text-danger"> * </span></label
+          >
+          <input
+            type="date"
+            [ngClass]="
+              formNewUser.get('fecha_nacimiento')?.hasError('required') &&
+              formNewUser.get('fecha_nacimiento')?.touched
+                ? 'form-control is-invalid'
+                : 'form-control'
+            "
+            placeholder="Fecha Nacimiento"
+            id="fecha_nacimiento"
+            formControlName="fecha_nacimiento"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              formNewUser.get('fechaNacimiento')?.hasError('required') &&
+              formNewUser.get('fechaNacimiento')?.touched
+            "
+            >Este campo es obligatorio.
+          </small>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="form-label">
+            Pais de residencia <span class="text-danger"> * </span></label
+          >
+          <select
+            class="form-control"
+            [ngClass]="
+              formNewUser.get('id_pais')?.hasError('required') &&
+              formNewUser.get('id_pais')?.touched
+                ? ' is-invalid'
+                : ''
+            "
+            #id_pais
+            id="id_pais"
+            formControlName="id_pais"
+          >
+            <option value="">Seleccione una opción...</option>
+            <option *ngFor="let pais of paises" [value]="pais.id_pais">
+              {{ pais.nombre + " - " + pais.codigo_internacional }}
+            </option>
+          </select>
+          <small
+            class="text-danger"
+            *ngIf="
+              formNewUser.get('id_pais')?.hasError('required') &&
+              formNewUser.get('id_pais')?.touched
+            "
+            >Este campo es obligatorio.</small
+          >
+        </div>
+      </div>
+
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="recibe_informacion" checked formControlName="recibe_informacion">
+        <label class="form-check-label" for="recibe_informacion">Recibe informacion</label>
+      </div>
+
+      <div class="col-12">
+      <div class="card-footer">
+        <div class="form-actions pull-right">
+          <button (click)="cancel()" class="btn btn-secondary float-end">
+            Volver
+          </button>
+          &nbsp;
+          &nbsp;
+          <button type="submit" class="btn btn-primary float-end" [disabled]="formNewUser.invalid" [ngClass]="disabled ? 'd-none' : ''">
+            Aceptar
+          </button>
+        </div>
+      </div>
+      </div>
+    </form>
+  </div>
+</div>
