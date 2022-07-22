@@ -6,9 +6,6 @@ _Challenge Loymark_
 
 _Clonar el proyecto. Se creara un repositorio local con dos carpetas (Cliente para el front - Servidor para el back) y un archivo Script.SQL con la base de datos._
 
-Mira **Deployment** para conocer como desplegar el proyecto.
-
-
 ### Pre-requisitos 📋
 ```
 Tener instalado Angular CLI. Desde una terminal ejecutamos el comando (npm install -g @angular/cli).
