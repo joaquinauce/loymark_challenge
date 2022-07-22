@@ -146,6 +146,7 @@ namespace LoymarkChallenge.Controllers
             {
                 ModelState.AddModelError("", $"Algo salió mal al dar de baja el registro {usuario.nombre}");
                 return StatusCode(500, ModelState);
+
             }
 
             Actividad actividad = new Actividad();
