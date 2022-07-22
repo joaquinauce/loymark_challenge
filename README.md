@@ -57,8 +57,6 @@ Un ejemplo de inyeccion de dependencia utilizo IMapper, haciendo uso de los DTO 
 ```
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
 * [Angular](https://angular.io/) - El framework web usado
 * [.NET Core 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) - BackEnd
 
