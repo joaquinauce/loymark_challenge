@@ -9,5 +9,6 @@ namespace LoymarkChallenge.Repository.IRepository
         public Usuario GetUsuario(int id_usuario);
         public bool UpdateUsuario(Usuario usuario);
         public ICollection<Usuario> GetUsuarios();
+        public bool UsuarioExists(int id_usuario, string email);
     }
 }

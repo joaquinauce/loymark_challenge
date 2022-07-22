@@ -96,6 +96,12 @@ namespace LoymarkChallenge.Controllers
                 return BadRequest();
             }
 
+            if (_usuarioRepo.UsuarioExists(id_usuario, usuarioDto.email))
+            {
+                ModelState.AddModelError("", "El correo electronico ya existe");
+                return StatusCode(412, ModelState);
+            }
+
             var pais = _paisRepo.GetPais(usuarioDto.id_pais);
 
             if (pais == null)

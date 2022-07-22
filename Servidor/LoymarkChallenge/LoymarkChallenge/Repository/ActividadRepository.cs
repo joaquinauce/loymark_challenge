@@ -34,7 +34,7 @@ namespace LoymarkChallenge.Repository
 
        public ICollection<Actividad> GetActividades()
         {
-            return _db.Actividades.OrderBy(a => a.id_actividad).ToList();
+            return _db.Actividades.OrderByDescending(a => a.id_actividad).ToList();
         }
     }
 }

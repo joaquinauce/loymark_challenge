@@ -48,6 +48,11 @@ namespace LoymarkChallenge.Repository
         {
             return _db.Usuarios.Include(p => p.Pais).Where(u => u.fecha_baja == null).OrderBy(u => u.apellido).ToList();
         }
+
+        public bool UsuarioExists(int id_usuario, string email)
+        {
+            return _db.Usuarios.Any(p => p.id_usuario != id_usuario && p.email == email);
+        }
     }
 }
     
